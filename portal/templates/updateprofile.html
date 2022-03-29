@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'card.css' %}">
+    <title>Dashboard</title>
+    
+</head>
+        <body>
+        <div class="main">
+            <br>
+            <label area-hidden="True">Edit Profile</label>
+
+            <div class="signup">
+                <form method="POST" action="{% url 'update' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <input type="text" name="status" placeholder="status">
+                    <input type="text" name="location" placeholder="location">
+                    <input type="file" name="image">
+                    <button>Update Profile</button>
+                    
+                </form>
+            </div>
+        </div>
+            
+        </body>
+</html>
+        

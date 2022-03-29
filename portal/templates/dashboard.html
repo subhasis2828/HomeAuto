@@ -1,0 +1,53 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'card.css' %}">
+    <title>Dashboard</title>
+    
+        </head>
+        <body>
+        
+            <div class="frame">
+                <div class="center">
+                  
+                      <div class="profile">
+                          <div class="image">
+                              <div class="circle-1"></div>
+                              <div class="circle-2"></div>
+                              <img src="{{user.userprofile.photo.url}}" width="70" height="70" alt="Jessica Potter">
+                          </div>
+                          
+                          <div class="name">{{user.username}}</div>
+                          <div class="status">{{user.userprofile.status}}</div>
+                          <div class="location">{{user.userprofile.location}}</div>
+                          
+                          <div class="actions">
+                              <button class="btn"><a style="text-decoration: None;" href="{% url 'update' %}">Edit Profile</a></button>
+                              <button class="btn">Change Password</button>
+                          </div>
+                      </div>
+                      
+                      <div class="stats">
+                          <div class="box">
+                              <span class="value">523</span>
+                              <span class="parameter">Posts</span>
+                          </div>
+                          <div class="box">
+                              <span class="value">1387</span>
+                              <span class="parameter">Likes</span>
+                          </div>
+                          <div class="box">
+                              <span class="value">146</span>
+                              <span class="parameter">Follower</span>
+                          </div>
+                      </div>
+                </div>
+              </div>
+        </body>
+        </html>
+        

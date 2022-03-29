@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slide Navbar</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+
+
+
+
+	<div class="main">
+        
+            {% if messages %}
+                
+                    {% for message in messages %}
+                    <label for="chk" aria-hidden="true">{{message}}</label>
+                    {% endfor %}
+                
+            {% endif %}
+
+
+
+		<input type="checkbox" id="chk" aria-hidden="true">
+
+			<div class="signup">
+				<form method="post" action="{% url 'index' %}">
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true">Sign up</label>
+					<input type="text" name="username" placeholder="User name" required="">
+					<input type="password" name="password1" placeholder="Password" required="">
+					<input type="password" name="password2" placeholder="Confirm Password" required="">
+					<button>Sign up</button>
+				</form>
+			</div>
+
+			<div class="login">
+				<form method="post" action = "{% url 'login' %}">
+                    {% csrf_token %}
+					<label for="chk" aria-hidden="true">Login</label>
+					<input type="text" name="username" placeholder="username" required="">
+					<input type="password" name="password" placeholder="Password" required="">
+					<button>Login</button>
+				</form>
+			</div>
+	</div>
+</body>
+</html>
