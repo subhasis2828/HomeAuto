@@ -7,6 +7,8 @@ from django.contrib.auth import login,authenticate,logout
 from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
+
+from api.models import Device,UserDevice
 # Create your views here.
 def home(request):
     if request.user.is_anonymous:
@@ -72,3 +74,36 @@ def updateprofile(request):
         return redirect('dashboard')
         
     return render(request,'updateprofile.html')
+
+#register device to user
+
+@login_required(login_url='index')
+def adddevice(request):
+
+    if request.method=='POST':
+
+        deviceId = request.POST['deviceId']
+
+        try:
+            device = Device.objects.get(deviceId=deviceId)
+
+            user   = request.user
+            userdevice= UserDevice.objects.create(user=user,device=device)
+            userdevice.save()
+            return redirect('dashboard')
+        except Device.DoesNotExist:
+            return redirect('dashboard')
+    return render(request,'adddevice.html')
+#reset password
+@login_required(login_url='index')
+def resetpass(request):
+    if request.method == 'POST':
+        oldpass = request.POST['old']
+        newpass = request.POST['new']
+        user = request.user
+        if user.check_password(oldpass):
+            user.set_password(newpass)
+            user.save()
+            logout(request)
+            return redirect('index')
+    return render(request,'reset.html')

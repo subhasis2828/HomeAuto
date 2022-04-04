@@ -1,0 +1,33 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" type="text/css" href="{% static 'form.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'profilecard.css' %}">
+    <title>Document</title>
+</head>
+<body>
+
+    <div class="main">
+        <br>
+        <br>
+        <label aria-hidden="true">Reset Password</label>
+        <div class="signup">
+
+            <form method='post' action="{% url 'reset' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                <input type="password" name="old" placeholder="Old Password">
+                <input type="password" name="new" placeholder="New Password">
+                <button>Reset Password</button>
+            </form>
+        </div>
+
+    </div>
+
+
+</body>
+</html>

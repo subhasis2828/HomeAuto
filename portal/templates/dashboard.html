@@ -27,16 +27,19 @@
                           <div class="location">{{user.userprofile.location}}</div>
                           
                           <div class="actions">
-                              <button class="btn"><a style="text-decoration: None;" href="{% url 'update' %}">Edit Profile</a></button>
-                              <button class="btn">Change Password</button>
+                            <a style="text-decoration: None;" href="{% url 'update' %}"><button class="btn">Edit Profile</button></a>
+                            <a style="text-decoration: None;" href="{% url 'reset' %}"><button class="btn">Change Password</button></a>
                           </div>
                       </div>
                       
                       <div class="stats">
-                          <div class="box">
-                              <span class="value">523</span>
-                              <span class="parameter">Posts</span>
-                          </div>
+                        <a style="text-decoration: None;" href="{% url 'add' %}">
+                            <div class="box">
+                              <span class="value">+</span>
+                              <span class="parameter">Add Device</span>
+                            </div>
+                        </a>
+                          
                           <div class="box">
                               <span class="value">1387</span>
                               <span class="parameter">Likes</span>
